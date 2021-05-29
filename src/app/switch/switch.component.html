@@ -1,3 +1,5 @@
 <mat-card-header>
   <h1>{{this.restaurantName}}</h1>
+  <div class="toolbar-spacer"></div>
+  <mat-slide-toggle (change)="onChange($event)">Switch</mat-slide-toggle>
 </mat-card-header>
