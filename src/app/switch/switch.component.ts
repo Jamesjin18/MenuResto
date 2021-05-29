@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-switch',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./switch.component.css']
 })
 export class SwitchComponent implements OnInit {
-
+  @Input() restaurantName?: string;
   constructor() { }
 
   ngOnInit(): void {
