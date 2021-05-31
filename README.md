@@ -3,7 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
 
 # Installation
-git clone
+git clone git@github.com:Jamesjin18/MenuResto.git
+
 npm install
 
 ## Development server
