@@ -1,7 +1,7 @@
 import { Dish } from "./dish";
 
 export class Order{
-    orderList?: Dish[];
+    orderList: Dish[];
 
     public constructor(orderList: Dish[]){
         this.orderList = orderList;
