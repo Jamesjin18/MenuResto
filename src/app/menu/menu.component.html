@@ -5,11 +5,11 @@
     <h4>PLAT DU JOUR</h4>
     <div class="pdj" *ngFor="let plat of menu1">
         <mat-card *ngIf="plat.type == 'plat' && plat.pdj == true ">
-            <form (ngSubmit)="onSubmit(f,plat)" #f="ngForm">
+            <form  #f="ngForm">
                 <input type="text" [placeholder] ="plat.name" [disabled]="!this.toggleState" name="name" ngModel>
                 <input type="number" [placeholder] ="plat.price" [disabled]="!this.toggleState" name="price" ngModel>
                 <button type="button" (click)="order(plat,$event)" [disabled]="this.toggleState" [hidden] ="this.toggleState">+</button>
-                <button  type="submit" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
+                <button  type="button" (click)="onSubmit(f,plat,$event)" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
             </form>
             
         </mat-card>
@@ -18,11 +18,11 @@
     <h4>ENTREE</h4>
     <div class="entree" *ngFor="let plat of menu1">
         <mat-card *ngIf="plat.type == 'entree'">
-            <form (ngSubmit)="onSubmit(f,plat)" #f="ngForm">
+            <form (ngSubmit)="onSubmit(f,plat,$event)" #f="ngForm">
                 <input type="text" [placeholder] ="plat.name" name="" [disabled]="!this.toggleState">
                 <input type="number" [placeholder] ="plat.price" [disabled]="!this.toggleState">
                 <button type="button" (click)="order(plat,$event)" [disabled]="this.toggleState" [hidden] ="this.toggleState">+</button>
-                <button type="submit" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
+                <button type="button" (click)="onSubmit(f,plat,$event)" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
             </form>
         </mat-card>
     </div>
@@ -30,11 +30,11 @@
     <h4>PLATS</h4>
     <div class="plat" *ngFor="let plat of menu1">
         <mat-card  *ngIf="plat.type == 'plat'">
-            <form (ngSubmit)="onSubmit(f,plat)" #f="ngForm">
+            <form (ngSubmit)="onSubmit(f,plat,$event)" #f="ngForm">
                 <input type="text" [placeholder] ="plat.name" [disabled]="!this.toggleState">
                 <input type="number" [placeholder] ="plat.price" [disabled]="!this.toggleState">
                 <button type="button" (click)="order(plat,$event)" [disabled]="this.toggleState" [hidden] ="this.toggleState">+</button>
-                <button type="submit" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
+                <button type="button" (click)="onSubmit(f,plat,$event)" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
             </form>
         </mat-card>
     </div>
@@ -42,11 +42,11 @@
     <h4>DESSERT</h4>
     <div class="dessert" *ngFor="let plat of menu1">
         <mat-card *ngIf="plat.type == 'dessert'">
-            <form (ngSubmit)="onSubmit(f,plat)" #f="ngForm">
+            <form (ngSubmit)="onSubmit(f,plat,$event)" #f="ngForm">
                 <input type="text" [placeholder] ="plat.name" [disabled]="!this.toggleState">
                 <input type="number" [placeholder] ="plat.price" [disabled]="!this.toggleState">
                 <button type="button" (click)="order(plat,$event)" [disabled]="this.toggleState" [hidden] ="this.toggleState">+</button>
-                <button type="submit" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
+                <button type="button" (click)="onSubmit(f,plat,$event)" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
             </form>
         </mat-card>
     </div>

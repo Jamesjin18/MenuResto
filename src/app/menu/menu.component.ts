@@ -21,6 +21,8 @@ export class MenuComponent {
   @Output() updateDish = new EventEmitter<any>();
   //add a new dish to the menu
   @Output() addDish = new EventEmitter<Dish>();
+  //send the dish which have to be remove
+  @Output() deleteDish = new EventEmitter<Dish>();
 
   constructor() { }
 
@@ -34,8 +36,17 @@ export class MenuComponent {
     }
     
   }
-  onSubmit(form:NgForm,dish:Dish) {
-    this.updateDish.emit({targetDish:dish,newDishName:form.value.name,newDishPrice:form.value.price})
+  onSubmit(form:NgForm,dish:Dish,event:MouseEvent) {
+    console.log(event);
+    //if shift key is pressed
+    if(event.shiftKey){
+      console.log("del");
+      this.deleteDish.emit(dish);
+    }else{
+      console.log("up")
+      this.updateDish.emit({targetDish:dish,newDishName:form.value.name,newDishPrice:form.value.price});
+    }
+    
   }
   addNewDish(form:NgForm){
     console.log(form.value);

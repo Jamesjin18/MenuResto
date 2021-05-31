@@ -66,12 +66,12 @@ export class AppComponent {
         console.log(this.resto1.menu[index]);
         this.resto1.menu[index].name=newName;
         this.resto1.menu[index].price=newPrice;
-        console.log(this.resto1.menu[index]);
+        console.log(this.resto1.menu);
+        console.log(index);
       }
     });
   }
   addNewDish(newDish:Dish){
-    console.log(newDish);
     let isExist= false;
     this.resto1.menu.forEach((element,index)=>{
       if(newDish==element){
@@ -81,5 +81,16 @@ export class AppComponent {
     if(!isExist){
       this.resto1.menu.push(newDish);
     }
+  }
+  deleteDish(dish:Dish){
+    console.log(dish);
+    let isExist= false;
+    this.resto1.menu.forEach((element,index)=>{
+      if(dish==element){
+        console.log(this.resto1.menu);
+        console.log(index);
+        this.resto1.menu.splice(index,1);
+      }
+    });
   }
 }
