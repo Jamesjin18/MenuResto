@@ -1,1 +1,32 @@
-<p>menu works!</p>
+
+<mat-card-content >
+    <h4>PLAT DU JOUR</h4>
+    <div class="pdj" *ngFor="let plat of menu1">
+        <mat-card *ngIf="plat.type == 'plat' && plat.pdj == true ">
+            <button  (click)="order(plat,$event)" >{{plat.name}}/{{plat.price}}</button>
+        </mat-card>
+    </div>
+    <h4>ENTREE</h4>
+    <div class="entree" *ngFor="let plat of menu1">
+        <mat-card *ngIf="plat.type == 'entree'">
+            <button  (click)="order(plat,$event)" >{{plat.name}}/{{plat.price}}</button>
+        </mat-card>
+    </div>
+    
+    <h4>PLATS</h4>
+    <div class="plat" *ngFor="let plat of menu1">
+        <mat-card  *ngIf="plat.type == 'plat'">
+            <button  (click)="order(plat,$event)">{{plat.name}}/{{plat.price}}</button>
+        </mat-card>
+    </div>
+    
+    <h4>DESSERT</h4>
+    <div class="dessert" *ngFor="let plat of menu1">
+        <mat-card *ngIf="plat.type == 'dessert'">
+            <button  (click)="order(plat,$event)">{{plat.name}}/{{plat.price}}</button>
+        </mat-card>
+    </div>
+    
+
+</mat-card-content>
+

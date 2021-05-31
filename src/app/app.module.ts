@@ -6,7 +6,12 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { OrderComponent } from './order/order.component';
 import { SwitchComponent } from './switch/switch.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatTableModule} from '@angular/material/table';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,8 +20,13 @@ import { SwitchComponent } from './switch/switch.component';
     SwitchComponent
   ],
   imports: [
+    MatCardModule,
+    MatToolbarModule,
+    MatSlideToggleModule,
+    MatTableModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
