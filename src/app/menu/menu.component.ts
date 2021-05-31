@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Dish } from '../Models/dish';
 
 @Component({
@@ -16,9 +17,11 @@ export class MenuComponent {
   @Output() orderedDish = new EventEmitter<Dish>();
   //send the dish which have to be remove
   @Output() removeDish = new EventEmitter<Dish>();
-  //send the dish which have to be remove
-  @Output() updateDish = new EventEmitter<Dish>();
-  
+  //send the dish which have to be updated
+  @Output() updateDish = new EventEmitter<any>();
+  //add a new dish to the menu
+  @Output() addDish = new EventEmitter<Dish>();
+
   constructor() { }
 
 
@@ -31,11 +34,18 @@ export class MenuComponent {
     }
     
   }
-  onSubmit() {
-    
+  onSubmit(form:NgForm,dish:Dish) {
+    this.updateDish.emit({targetDish:dish,newDishName:form.value.name,newDishPrice:form.value.price})
   }
-  update(dish:Dish) {
-    this.updateDish.emit(dish);
+  addNewDish(form:NgForm){
+    console.log(form.value);
+    let newDish: Dish = {
+      name:form.value.name,
+      price:form.value.price,
+      type:form.value.type
+    }
+    this.addDish.emit(newDish);
+
   }
 
 }

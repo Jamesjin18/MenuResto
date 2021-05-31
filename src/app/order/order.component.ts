@@ -16,8 +16,8 @@ export class OrderComponent  {
   //table of data
   dataSource: MatTableDataSource <Order> ;
   //columns of our table
-  displayedColumns: string[] = ['type', 'name','price', 'quantity'];
-
+  displayedColumns: string[] = ['type', 'name','quantity','price' ];
+  totalCost = 0;
   //implement table to be able to refresh table data
   @ViewChild(MatTable) table: MatTable<Order> | undefined;
   
@@ -32,6 +32,13 @@ export class OrderComponent  {
   update(){
     this.dataSource.data = this._orderList;
     this.table?.renderRows();
+  }
+  getTotalCost() {
+    let total=0;
+    this.orderList.forEach((order)=>{
+      total = total + (order.order.price * order.quantity);
+    });
+    return total;
   }
   //getter and setter of orederList
   @Input()

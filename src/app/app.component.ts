@@ -32,7 +32,6 @@ export class AppComponent {
   }
   //add an order to order component
   addOrder(dish: Dish) {
-    console.log(dish);
     let isAdded = true;
     this.orderList.forEach((element,index)=>{
       if(element.order == dish){
@@ -56,16 +55,31 @@ export class AppComponent {
       }
     });
   }
-  //remove order from order component
-  updateDish(order: Dish) {
-    let orders = this.orderList.slice();
-    this.orderList.forEach((element,index)=>{
-      if(element.order == order){
-        this.orderList[index].quantity --;
-        if(this.orderList[index].quantity<=0){
-          this.orderList.splice(index,1);
-        }
+  //remove order from order update
+  updateDish(data:any) {
+    let target = data.targetDish;
+    let newName = data.newDishName;
+    let newPrice = data.newDishPrice;
+
+    this.resto1.menu?.forEach((element,index)=>{
+      if(element == target){
+        console.log(this.resto1.menu[index]);
+        this.resto1.menu[index].name=newName;
+        this.resto1.menu[index].price=newPrice;
+        console.log(this.resto1.menu[index]);
       }
     });
+  }
+  addNewDish(newDish:Dish){
+    console.log(newDish);
+    let isExist= false;
+    this.resto1.menu.forEach((element,index)=>{
+      if(newDish==element){
+        isExist=true;
+      }
+    });
+    if(!isExist){
+      this.resto1.menu.push(newDish);
+    }
   }
 }
