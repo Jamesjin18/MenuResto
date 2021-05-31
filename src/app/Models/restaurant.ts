@@ -1,7 +1,7 @@
 import { Dish } from "./dish";
 
 export class Restaurant{
-    name?: string;
+    name: string;
     menu?: Dish[];
 
     public constructor(name:string,menu: Dish[]){
