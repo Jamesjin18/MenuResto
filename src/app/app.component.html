@@ -1,5 +1,8 @@
 <mat-card> 
   <app-switch [restaurantName] ="resto1.name" (toggleState)="onCheck($event)"></app-switch>
-  <app-menu [menu1]="menu1" (orderedDish)="addOrder($event)" (removeDish)="removeOrder($event)"></app-menu>
+  <app-menu [menu1]="menu1" [toggleState]="toggleState" 
+  (orderedDish)="addOrder($event)" (removeDish)="removeOrder($event)" 
+  (updateDish)="updateDish($event)" (addDish)="addNewDish($event)" 
+  (deleteDish)="deleteDish($event)"></app-menu>
   <app-order [orderList]="orderList"></app-order>
 </mat-card>

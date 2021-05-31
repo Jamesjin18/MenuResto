@@ -12,6 +12,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { FormsModule }   from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     SwitchComponent
   ],
   imports: [
+    FormsModule,
     MatCardModule,
     MatToolbarModule,
     MatSlideToggleModule,

@@ -1,32 +1,71 @@
 
+
+<h2 style="background-color: #000000;color: white;">MENU</h2>
 <mat-card-content >
     <h4>PLAT DU JOUR</h4>
     <div class="pdj" *ngFor="let plat of menu1">
         <mat-card *ngIf="plat.type == 'plat' && plat.pdj == true ">
-            <button  (click)="order(plat,$event)" >{{plat.name}}/{{plat.price}}</button>
+            <form  #f="ngForm">
+                <input type="text" [placeholder] ="plat.name" [disabled]="!this.toggleState" name="name" ngModel>
+                <input type="number" [placeholder] ="plat.price" [disabled]="!this.toggleState" name="price" ngModel>
+                <button type="button" (click)="order(plat,$event)" [disabled]="this.toggleState" [hidden] ="this.toggleState">+</button>
+                <button  type="button" (click)="onSubmit(f,plat,$event)" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
+            </form>
+            
         </mat-card>
     </div>
+    
     <h4>ENTREE</h4>
     <div class="entree" *ngFor="let plat of menu1">
         <mat-card *ngIf="plat.type == 'entree'">
-            <button  (click)="order(plat,$event)" >{{plat.name}}/{{plat.price}}</button>
+            <form (ngSubmit)="onSubmit(f,plat,$event)" #f="ngForm">
+                <input type="text" [placeholder] ="plat.name" name="" [disabled]="!this.toggleState">
+                <input type="number" [placeholder] ="plat.price" [disabled]="!this.toggleState">
+                <button type="button" (click)="order(plat,$event)" [disabled]="this.toggleState" [hidden] ="this.toggleState">+</button>
+                <button type="button" (click)="onSubmit(f,plat,$event)" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
+            </form>
         </mat-card>
     </div>
     
     <h4>PLATS</h4>
     <div class="plat" *ngFor="let plat of menu1">
         <mat-card  *ngIf="plat.type == 'plat'">
-            <button  (click)="order(plat,$event)">{{plat.name}}/{{plat.price}}</button>
+            <form (ngSubmit)="onSubmit(f,plat,$event)" #f="ngForm">
+                <input type="text" [placeholder] ="plat.name" [disabled]="!this.toggleState">
+                <input type="number" [placeholder] ="plat.price" [disabled]="!this.toggleState">
+                <button type="button" (click)="order(plat,$event)" [disabled]="this.toggleState" [hidden] ="this.toggleState">+</button>
+                <button type="button" (click)="onSubmit(f,plat,$event)" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
+            </form>
         </mat-card>
     </div>
     
     <h4>DESSERT</h4>
     <div class="dessert" *ngFor="let plat of menu1">
         <mat-card *ngIf="plat.type == 'dessert'">
-            <button  (click)="order(plat,$event)">{{plat.name}}/{{plat.price}}</button>
+            <form (ngSubmit)="onSubmit(f,plat,$event)" #f="ngForm">
+                <input type="text" [placeholder] ="plat.name" [disabled]="!this.toggleState">
+                <input type="number" [placeholder] ="plat.price" [disabled]="!this.toggleState">
+                <button type="button" (click)="order(plat,$event)" [disabled]="this.toggleState" [hidden] ="this.toggleState">+</button>
+                <button type="button" (click)="onSubmit(f,plat,$event)" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
+            </form>
         </mat-card>
     </div>
     
-
 </mat-card-content>
+<mat-card class="addDishInMenu" >
+    <form (ngSubmit)="addNewDish(f)" #f="ngForm"  [hidden] ="!this.toggleState">
+        <label for="name">nom:</label>
+        <input type="text" [disabled]="!this.toggleState" name="name" ngModel>
+        <label for="price">prix:</label>
+        <input type="number" [disabled]="!this.toggleState" name="price" ngModel>
+        <label for="type">type:</label>
+        <select [disabled]="!this.toggleState" name="type" ngModel>
+            <option value="plat">plat</option>
+            <option value="dessert">dessert</option>
+            <option value="entree">entree</option>
+        </select>
+        <button type="submit" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Valider</button>
+    </form>
+</mat-card>
+
 
