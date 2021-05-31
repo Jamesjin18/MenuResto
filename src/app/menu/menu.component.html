@@ -1,32 +1,48 @@
 
+
+<h2 style="background-color: #000000;color: white;">MENU</h2>
 <mat-card-content >
     <h4>PLAT DU JOUR</h4>
     <div class="pdj" *ngFor="let plat of menu1">
         <mat-card *ngIf="plat.type == 'plat' && plat.pdj == true ">
-            <button  (click)="order(plat,$event)" >{{plat.name}}/{{plat.price}}</button>
+            <form>
+                <input type="text" [placeholder] ="plat.name" [disabled]="!this.toggleState">
+                <input type="text" [placeholder] ="plat.price" [disabled]="!this.toggleState">
+                <button  (click)="order(plat,$event)" [disabled]="this.toggleState" [hidden] ="this.toggleState">+</button>
+                <button  (click)="update(plat)" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
+            </form>
         </mat-card>
     </div>
+    
     <h4>ENTREE</h4>
     <div class="entree" *ngFor="let plat of menu1">
         <mat-card *ngIf="plat.type == 'entree'">
-            <button  (click)="order(plat,$event)" >{{plat.name}}/{{plat.price}}</button>
+            <input type="text" [placeholder] ="plat.name" name="" [disabled]="!this.toggleState">
+            <input type="text" [placeholder] ="plat.price" [disabled]="!this.toggleState">
+            <button  (click)="order(plat,$event)" [disabled]="this.toggleState" [hidden] ="this.toggleState">+</button>
+            <button  (click)="update(plat)" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
         </mat-card>
     </div>
     
     <h4>PLATS</h4>
     <div class="plat" *ngFor="let plat of menu1">
         <mat-card  *ngIf="plat.type == 'plat'">
-            <button  (click)="order(plat,$event)">{{plat.name}}/{{plat.price}}</button>
+            <input type="text" [placeholder] ="plat.name" [disabled]="!this.toggleState">
+            <input type="text" [placeholder] ="plat.price" [disabled]="!this.toggleState">
+            <button  (click)="order(plat,$event)" [disabled]="this.toggleState" [hidden] ="this.toggleState">+</button>
+            <button  (click)="update(plat)" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
         </mat-card>
     </div>
     
     <h4>DESSERT</h4>
     <div class="dessert" *ngFor="let plat of menu1">
         <mat-card *ngIf="plat.type == 'dessert'">
-            <button  (click)="order(plat,$event)">{{plat.name}}/{{plat.price}}</button>
+            <input type="text" [placeholder] ="plat.name" [disabled]="!this.toggleState">
+            <input type="text" [placeholder] ="plat.price" [disabled]="!this.toggleState">
+            <button  (click)="order(plat,$event)" [disabled]="this.toggleState" [hidden] ="this.toggleState">+</button>
+            <button  (click)="update(plat)" [disabled]="!this.toggleState" [hidden] ="!this.toggleState">Modifier</button>
         </mat-card>
     </div>
-    
-
 </mat-card-content>
+
 

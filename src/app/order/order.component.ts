@@ -2,6 +2,7 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { of } from 'rxjs';
 import { Dish } from '../Models/dish';
+import { Order } from '../Models/order';
 
 @Component({
   selector: 'app-order',
@@ -11,17 +12,17 @@ import { Dish } from '../Models/dish';
 export class OrderComponent  {
 
   //our order 
-  _orderList:Dish[] = [];
+  _orderList:Order[] = [];
   //table of data
-  dataSource: MatTableDataSource <Dish> ;
+  dataSource: MatTableDataSource <Order> ;
   //columns of our table
-  displayedColumns: string[] = ['type', 'name','price'];
+  displayedColumns: string[] = ['type', 'name','price', 'quantity'];
 
   //implement table to be able to refresh table data
-  @ViewChild(MatTable) table: MatTable<Dish> | undefined;
+  @ViewChild(MatTable) table: MatTable<Order> | undefined;
   
   constructor() { 
-    this.dataSource = new MatTableDataSource<Dish>();
+    this.dataSource = new MatTableDataSource<Order>();
   }
   //call when a change occure
   ngDoCheck(){
@@ -34,8 +35,8 @@ export class OrderComponent  {
   }
   //getter and setter of orederList
   @Input()
-  get orderList(): Dish[] { return this._orderList; }
-  set orderList(orders:Dish[]){
+  get orderList(): Order[] { return this._orderList; }
+  set orderList(orders:Order[]){
     this._orderList = orders;
     this.update();
   }

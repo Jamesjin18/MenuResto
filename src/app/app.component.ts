@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { __importDefault } from 'tslib';
 import { Dish } from './Models/dish';
+import { Order } from './Models/order';
 import { Restaurant } from './Models/restaurant';
 
 @Component({
@@ -23,7 +24,7 @@ export class AppComponent {
     {name:"gateau",type:"dessert",price:4}
   ];
   resto1 = new Restaurant("Hippopotamus",this.menu1);
-  orderList:Dish[] = [];
+  orderList:Order[] = [];
 
   //bind toggleState to button from switch component 
   onCheck(check: boolean) {
@@ -31,21 +32,40 @@ export class AppComponent {
   }
   //add an order to order component
   addOrder(dish: Dish) {
-    if(this.toggleState){
-      this.orderList.push(dish);
-    }else{
-      console.log("Your are not connected");
+    console.log(dish);
+    let isAdded = true;
+    this.orderList.forEach((element,index)=>{
+      if(element.order == dish){
+        this.orderList[index].quantity ++;
+        isAdded = false;
+      }
+    });
+    if(isAdded){
+      this.orderList.push(new Order(dish,1));
     }
   }
   //remove order from order component
   removeOrder(order: Dish) {
-    //create a shadow copy
     let orders = this.orderList.slice();
-    this.orderList.forEach((dish,index)=>{
-      if(order==dish) {
-        orders.splice(orders.indexOf(dish),1)
-      };
+    this.orderList.forEach((element,index)=>{
+      if(element.order == order){
+        this.orderList[index].quantity --;
+        if(this.orderList[index].quantity<=0){
+          this.orderList.splice(index,1);
+        }
+      }
     });
-    this.orderList = orders;
+  }
+  //remove order from order component
+  updateDish(order: Dish) {
+    let orders = this.orderList.slice();
+    this.orderList.forEach((element,index)=>{
+      if(element.order == order){
+        this.orderList[index].quantity --;
+        if(this.orderList[index].quantity<=0){
+          this.orderList.splice(index,1);
+        }
+      }
+    });
   }
 }

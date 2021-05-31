@@ -1,10 +1,12 @@
 import { Dish } from "./dish";
 
 export class Order{
-    orderList: Dish[];
+    order: Dish;
+    quantity: number;
 
-    public constructor(orderList: Dish[]){
-        this.orderList = orderList;
+    public constructor(order: Dish,quantity:number){
+        this.order = order;
+        this.quantity = quantity;
     }
     
 }
